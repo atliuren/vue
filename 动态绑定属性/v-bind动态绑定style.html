@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  red一定要使用单引号 要不然会当作一个对象去解析
+    <h2 v-bind:style="{color: 'red'}">{{message}}</h2>-->
+    <h2 v-bind:style="{color: 'red'}">{{message}}</h2>
+    <h2 v-bind:style="{color: 'red',fontSize: '50px'}">{{message}}</h2>
+    <h2 v-bind:style="{color: Color,fontSize: FontSize + 'px'}">{{message}}</h2>
+    <h2 v-bind:style="getStyle()">{{message}}</h2>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            message: "hello vue",
+            Color: "red",
+            FontSize: 50
+        },
+        methods: {
+            getStyle: function () {
+                return {color: this.Color,fontSize: this.FontSize + 'px'}
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

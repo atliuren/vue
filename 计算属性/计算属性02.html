@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    总价格：<h2>{{totalPrice}}</h2>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            message: "hello vue",
+            books: [
+                {id: 101, name: "三国演义", price: 88.8},
+                {id: 102, name: "水浒传", price: 87.8},
+                {id: 103, name: "西游记", price: 89.9},
+                {id: 104, name: "红楼梦", price: 77.7}
+            ]
+        },
+        computed: {
+            totalPrice: function () {
+                let result = 0;
+                for(let i in this.books){
+                    result += this.books[i].price;
+                }
+                return result;
+            }
+        }
+    })
+</script>
+</body>
+</html>
